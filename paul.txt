@@ -1,0 +1,72 @@
+# This is a recreation of the famous game "Flappy Bird"
+# Made by:
+# Quentin DEMURGE (email:  ) and Paul SMITH (email: paulsierra817@gmail.com)
+# IUT Lyon 1 - LP RAVI
+import random
+import pygame
+
+
+from pygame import K_s, K_SPACE  # librairie pour détecter l'appuie sur la barre d'espace
+from pygame.math import Vector2
+import core
+from bird import Bird # import la classe Bird
+from obstacle import Obstacle # import la classe obstacle
+
+# Variables globales
+flappy = Bird()
+tuyau = Obstacle()
+i = None
+clock = pygame.time.Clock()
+fond = pygame.image.load('images/fond.png')
+
+def setup():
+    print("Setup START---------")
+    core.fps = 30
+    core.WINDOW_SIZE = [500, 750]
+
+
+    # ---Setup Flappy---
+    #flappy.couleur = "yellow"
+    #flappy.image = pygame.display.load('images/bird.png')
+    flappy.affichage()
+    flappy.pos_x = 80
+    flappy.pos_y = 400
+    flappy.rayon = 20
+
+    # ---Setup Tuyau---
+    tuyau.couleur = "dark green"
+    tuyau.posX1 = 300
+    tuyau.posY1 = 0
+    tuyau.posX2 = 50
+    tuyau.posY2 = 450
+
+
+
+
+    print("Setup END-----------")
+
+
+def run():
+    print("running")
+
+    # Affichage Flappy
+    flappy.affichage()
+
+    # Affichage Tuyau
+    tuyau.affichage()
+
+
+
+
+    # Saut
+
+    if pygame.key.get_pressed()[K_SPACE]:
+
+        flappy.saut()
+
+
+
+
+if __name__ == '__main__':
+
+    core.main(setup, run)

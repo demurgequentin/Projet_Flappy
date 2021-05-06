@@ -6,6 +6,7 @@ from obstacle import Obstacle
 class Bird:
 
     def __init__(self):
+        self.surface = pygame.image.load('images/bird.png')
         self.couleur = ""
         self.rayon = None
         self.pos_x = None
@@ -17,7 +18,7 @@ class Bird:
 
     def affichage(self):
 
-        pygame.draw.circle(core.screen, self.couleur, [self.pos_x, self.pos_y], self.rayon)
+        pygame.draw.circle(self.surface, core.screen, self.couleur, [self.pos_x, self.pos_y], self.rayon)
 
     def saut(self):
 
